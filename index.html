@@ -81,15 +81,15 @@
     <script src="https://github.com/Cognigy/Webchat/releases/latest/download/webchat.js"></script>
     <script>
         initWebchat(
-            "https://endpoint-foundever.cognigy.cloud/5641fb8fcd70dffe2d090d03a478a86305825ef831ad17f8259b612ce179a616",
+            "https://endpoint-trial.cognigy.ai/72986738c2c7e5f3aa64869e48f99d014a0ea57859c27b69d90debc0bd304aa1",
             {
                 settings: {
                     teaserMessage: {
-                        text: "Tease example",
-                        teaserMessageDelay: 5000 // in ms. 5sec in this case
+                        text: "Comment puis-je t'aider?",
+                        teaserMessageDelay: 1000 // in ms. 1sec in this case
                     }
                 }
             }
-        ).then( webchat => {webchat.open()});
+        );
     </script>
 </html>
