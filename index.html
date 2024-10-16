@@ -32,6 +32,14 @@
             border-radius: 15px 15px 15px 0;
         }
 
+        [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-message-row.bot .chat-bubble:has(.say-thinking) {
+            display: none;
+        }
+
+        [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-message-row.bot:last-of-type .chat-bubble:has(.say-thinking) {
+            display: block;
+        }
+
         [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-message-row.bot .webchat-quick-reply-template-button {
             background-color: #fff;
             color: #2468F4;
