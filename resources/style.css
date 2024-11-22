@@ -48,7 +48,7 @@
   display: none; }
 [data-cognigy-webchat-root] [data-cognigy-webchat-toggle].webchat-toggle-button {
   right: 35px !important;
-  bottom: 26px !important; }
+  bottom: 25px !important; }
   [data-cognigy-webchat-root] [data-cognigy-webchat-toggle].webchat-toggle-button::before {
     display: block;
     position: absolute;
