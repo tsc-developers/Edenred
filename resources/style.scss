@@ -1,0 +1,107 @@
+[data-cognigy-webchat-root] {
+    [data-cognigy-webchat].webchat {
+        border-radius: 30px;
+
+        .webchat-header-bar {
+            color: #fff;
+            background: linear-gradient(135deg, #DC2719, #F11C3A, rgb(242, 6, 125));
+            padding: 30px;
+
+            .webchat-header-cognigy-logo {
+                display: none;
+            }
+
+            svg {
+                fill: #fff;
+            }
+        }
+
+        .webchat-message-row.bot {
+            .webchat-avatar {
+                display: none;
+            }
+
+            .chat-bubble {
+                border-width: 0px;
+                border-radius: 15px 15px 15px 0;
+
+                &:has(.say-thinking) {
+                    display: none;
+                }
+            }
+
+            &:last-of-type {
+                .chat-bubble:has(.say-thinking) {
+                    display: block;
+                }
+            }
+
+            .webchat-quick-reply-template-button {
+                background-color: #fff;
+                color: #2468F4;
+                border: 1px solid #CBD5E1;
+                font-weight: bolder;
+
+                span {
+                    font-weight: bolder;
+                }
+
+                &.disabled {
+                    color: #CBD5E1;
+                }
+            }
+        }
+
+        .webchat-message-row.user {
+            .chat-bubble {
+                border-width: 0px;
+                border-radius: 15px 15px 0 15px;
+            }
+        }
+
+        .webchat-input {
+            border: 0px;
+
+            .webchat-input-message-input {
+                border: 1px solid #ccc;
+                margin: 6px 0;
+                padding: 10px 16px;
+                border-radius: 40px;
+            }
+
+            .webchat-input-button-send {
+                padding: 13px;
+                height: 42px;
+                width: 42px;
+                border-radius: 40px;
+                background-color: black;
+
+                svg {
+                    fill: #fff;
+                }
+            }
+        }
+    }
+
+    #cognigyBrandingLink {
+        display: none;
+    }
+}
+
+button {
+    &.webchat-toggle-button {
+        right: 35px !important;
+        bottom: 26px !important;
+        &::before {
+            display: block;
+            position: absolute;
+            background-image: url(chatbot.png);
+            content: " ";
+            width: 140px;
+            height: 150px;
+        }
+        svg {
+            display: none;
+        }
+    }
+}
