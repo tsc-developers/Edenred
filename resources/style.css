@@ -46,18 +46,17 @@
         fill: #fff; }
 [data-cognigy-webchat-root] #cognigyBrandingLink {
   display: none; }
-
-button.webchat-toggle-button {
+[data-cognigy-webchat-root] [data-cognigy-webchat-toggle].webchat-toggle-button {
   right: 35px !important;
   bottom: 26px !important; }
-  button.webchat-toggle-button::before {
+  [data-cognigy-webchat-root] [data-cognigy-webchat-toggle].webchat-toggle-button::before {
     display: block;
     position: absolute;
     background-image: url(chatbot.png);
     content: " ";
     width: 140px;
     height: 150px; }
-  button.webchat-toggle-button svg {
+  [data-cognigy-webchat-root] [data-cognigy-webchat-toggle].webchat-toggle-button svg {
     display: none; }
 
 /*# sourceMappingURL=style.css.map */

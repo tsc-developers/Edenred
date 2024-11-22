@@ -86,22 +86,22 @@
     #cognigyBrandingLink {
         display: none;
     }
+    [data-cognigy-webchat-toggle] {
+        &.webchat-toggle-button {
+            right: 35px !important;
+            bottom: 26px !important;
+            &::before {
+                display: block;
+                position: absolute;
+                background-image: url(chatbot.png);
+                content: " ";
+                width: 140px;
+                height: 150px;
+            }
+            svg {
+                display: none;
+            }
+        }
+    }    
 }
 
-button {
-    &.webchat-toggle-button {
-        right: 35px !important;
-        bottom: 26px !important;
-        &::before {
-            display: block;
-            position: absolute;
-            background-image: url(chatbot.png);
-            content: " ";
-            width: 140px;
-            height: 150px;
-        }
-        svg {
-            display: none;
-        }
-    }
-}
