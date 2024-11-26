@@ -63,10 +63,11 @@
                         });
                         
                         let visibleView = window.visualViewport;
+                        let maxViewHeight = document.documentElement.clientHeight;
 
                         visibleView.addEventListener( 'resize', function func() {
                             let visibleViewHeight = visibleView.height;
-                            let visibleViewWidth = visibleView.width;
+                            let visibleViewWidth = visibleView.width;                            
 
                             if(visibleViewWidth < 575){
                                 let webchat_content = document.querySelector('[data-cognigy-webchat]');
