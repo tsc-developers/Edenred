@@ -61,6 +61,8 @@
                                 if(newMessageIndicator) newMessageIndicator.remove();
                             }
                         });
+                        
+                        let visibleView = window.visualViewport;
 
                         visibleView.addEventListener( 'resize', function func() {
                             let visibleViewHeight = visibleView.height;
