@@ -100,12 +100,14 @@
                 }
             }
         ).then((webchat) => { 
+            window.webchat = webchat;
+
             // Create a "New Message" indicator
             addOpenChatListener();
 
             webchat.registerAnalyticsService((event) => {
-                let scrollTopValue = currentScrollTop;                
                 if (event.type === "webchat/incoming-message") { // Event when bot send message
+                    let scrollTopValue = currentScrollTop;
                     if(!container) container = document.querySelector('#webchatChatHistory');
                     if(container) {
                         setTimeout(() => {
@@ -116,7 +118,7 @@
                             
                             if(!isAtBottom) container.insertAdjacentElement('afterend', newMessageIndicator);
 
-                        }, 1);
+                        }, 10);
                     }
                 }
             })
