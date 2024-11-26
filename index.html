@@ -47,6 +47,8 @@
             });
         }
 
+        let currentScrollTop = 0;
+
         const addOpenChatListener = () => {
             waitForElm("[data-cognigy-webchat-toggle]").then((elm) => {
                 document.querySelector("[data-cognigy-webchat-toggle]").addEventListener("click", function (event) {
@@ -54,6 +56,7 @@
                         container = document.querySelector('#webchatChatHistory');
                         
                         container.addEventListener('scroll', () => {
+                            currentScrollTop = container.scrollTop;
                             const isAtBottom = container.scrollHeight - container.scrollTop === container.clientHeight;
                             if (isAtBottom) {
                                 // Remove the "New Message" indicator when at the bottom
@@ -101,15 +104,13 @@
             addOpenChatListener();
 
             webchat.registerAnalyticsService((event) => {
-                
+                let scrollTopValue = currentScrollTop;                
                 if (event.type === "webchat/incoming-message") { // Event when bot send message
                     if(!container) container = document.querySelector('#webchatChatHistory');
                     if(container) {
-                        let scroll_position = container.scrollTop 
-
                         setTimeout(() => {
                             container.scrollTo({
-                                top: scroll_position
+                                top: scrollTopValue
                             });
                             const isAtBottom = container.scrollHeight - container.scrollTop === container.clientHeight;
                             
