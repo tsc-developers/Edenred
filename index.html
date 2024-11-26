@@ -61,6 +61,23 @@
                                 if(newMessageIndicator) newMessageIndicator.remove();
                             }
                         });
+
+                        visibleView.addEventListener( 'resize', function func() {
+                            let visibleViewHeight = visibleView.height;
+                            let visibleViewWidth = visibleView.width;
+
+                            if(visibleViewWidth < 575){
+                                let webchat_content = document.querySelector('[data-cognigy-webchat]');
+                                let webchat_header = document.querySelector('.webchat-header-bar');
+                                if ( visibleViewHeight < maxViewHeight ){
+                                    webchat_content.style.cssText = `height: ${visibleViewHeight}px; top: ${maxViewHeight - visibleViewHeight}px`;\
+                                    webchat_header.style.cssText = 'padding-top: 10px;padding-bottom: 10px;'
+                                }else{
+                                    webchat_content.style.cssText = '';
+                                    webchat_header.style.cssText = ''
+                                }
+                            }
+                        });
                     });
                 })
             });
