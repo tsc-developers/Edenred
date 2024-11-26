@@ -1,5 +1,7 @@
 [data-cognigy-webchat-root] [data-cognigy-webchat].webchat {
-  border-radius: 30px; }
+  border-radius: 30px; 
+  bottom: 125px;
+}
   [data-cognigy-webchat-root] [data-cognigy-webchat].webchat .webchat-header-bar {
     color: #fff;
     background: linear-gradient(135deg, #DC2719, #F11C3A, #f2067d);
