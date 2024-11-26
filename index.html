@@ -105,25 +105,17 @@
                 if (event.type === "webchat/incoming-message") { // Event when bot send message
                     if(!container) container = document.querySelector('#webchatChatHistory');
                     if(container) {
-                        // Find all elements with the specified class inside the container
-                        let userMessages = container.querySelectorAll('.webchat-message-row.user');
-                        let allMessages = container.querySelectorAll('.webchat-message-row');
-            
-                        if (userMessages.length > 0 && !allMessages[allMessages.length - 2].classList.contains('bot')) {
-                            // Get the last element
-                            let lastElement = userMessages[userMessages.length - 1];
-                
-                            // Scroll the container to make the last element visible
-                            setTimeout(() => {
-                                container.scrollTo({
-                                    top: lastElement.offsetTop - container.offsetTop
-                                });
-                                const isAtBottom = container.scrollHeight - container.scrollTop === container.clientHeight;
-                                
-                                if(!isAtBottom) container.insertAdjacentElement('afterend', newMessageIndicator);
+                        let scroll_position = container.scrollTop 
 
-                            }, 1);
-                        }
+                        setTimeout(() => {
+                            container.scrollTo({
+                                top: scroll_position
+                            });
+                            const isAtBottom = container.scrollHeight - container.scrollTop === container.clientHeight;
+                            
+                            if(!isAtBottom) container.insertAdjacentElement('afterend', newMessageIndicator);
+
+                        }, 1);
                     }
                 }
             })
