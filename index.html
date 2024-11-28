@@ -10,86 +10,9 @@
   </head>
   <body></body>
     <script src="https://github.com/Cognigy/Webchat/releases/latest/download/webchat.js"></script>
+    <script src="resources/javascripts/EdenredWebchat.js"></script>
     <script>
-        const newMessageIndicator = document.createElement('div');
-        newMessageIndicator.id = 'newMessageIndicator';
-        newMessageIndicator.textContent = 'Nouveau message';
-        newMessageIndicator.style.cssText = `
-            position: relative;
-            bottom: 40px;
-            margin-bottom: -40px;
-            background-color: rgb(255, 200, 200);
-            text-align: center;
-            font-size: 12px;
-            color: #DC2719;
-            padding: 10px 15px;
-            z-index: 1000;
-        `;
-        let container = null;
-
-        const waitForElm = (selector) => {
-            return new Promise((resolve) => {
-                if (document.querySelector(selector)) {
-                    return resolve(document.querySelector(selector));
-                }
-
-                const observer = new MutationObserver((mutations) => {
-                    if (document.querySelector(selector)) {
-                    resolve(document.querySelector(selector));
-                    observer.disconnect();
-                    }
-                });
-
-                observer.observe(document.body, {
-                    childList: true,
-                    subtree: true,
-                });
-            });
-        }
-
-        let currentScrollTop = 0;
-
-        const addOpenChatListener = () => {
-            waitForElm("[data-cognigy-webchat-toggle]").then((elm) => {
-                document.querySelector("[data-cognigy-webchat-toggle]").addEventListener("click", function (event) {
-                    waitForElm("#webchatChatHistory").then((elm) => {
-                        container = document.querySelector('#webchatChatHistory');
-                        
-                        container.addEventListener('scroll', () => {
-                            currentScrollTop = container.scrollTop;
-                            const isAtBottom = container.scrollHeight - container.scrollTop === container.clientHeight;
-                            if (isAtBottom) {
-                                // Remove the "New Message" indicator when at the bottom
-                                let newMessageIndicator = document.querySelector('#newMessageIndicator');
-                                if(newMessageIndicator) newMessageIndicator.remove();
-                            }
-                        });
-                        
-                        let visibleView = window.visualViewport;
-                        let maxViewHeight = document.documentElement.clientHeight;
-
-                        visibleView.addEventListener( 'resize', function func() {
-                            let visibleViewHeight = visibleView.height;
-                            let visibleViewWidth = visibleView.width;                            
-
-                            if(visibleViewWidth < 575){
-                                let webchat_content = document.querySelector('[data-cognigy-webchat]');
-                                let webchat_header = document.querySelector('.webchat-header-bar');
-                                if ( visibleViewHeight < maxViewHeight ){
-                                    webchat_content.style.cssText = `height: ${visibleViewHeight}px; top: ${maxViewHeight - visibleViewHeight}px`;
-                                    webchat_header.style.cssText = 'padding-top: 10px;padding-bottom: 10px;'
-                                }else{
-                                    webchat_content.style.cssText = '';
-                                    webchat_header.style.cssText = ''
-                                }
-                            }
-                        });
-                    });
-                })
-            });
-        }
-
-        initWebchat(
+        const cognigy = new EdenredWebchat(
             "https://endpoint-foundever.cognigy.cloud/5641fb8fcd70dffe2d090d03a478a86305825ef831ad17f8259b612ce179a616",
             {
                 settings: {
@@ -99,29 +22,6 @@
                     }
                 }
             }
-        ).then((webchat) => { 
-            window.webchat = webchat;
-
-            // Create a "New Message" indicator
-            addOpenChatListener();
-
-            webchat.registerAnalyticsService((event) => {
-                if (event.type === "webchat/incoming-message") { // Event when bot send message
-                    let scrollTopValue = currentScrollTop;
-                    if(!container) container = document.querySelector('#webchatChatHistory');
-                    if(container) {
-                        setTimeout(() => {
-                            container.scrollTo({
-                                top: scrollTopValue
-                            });
-                            const isAtBottom = container.scrollHeight - container.scrollTop === container.clientHeight;
-                            
-                            if(!isAtBottom) container.insertAdjacentElement('afterend', newMessageIndicator);
-
-                        }, 10);
-                    }
-                }
-            })
-        });;
+        ).initEdenredWebchat(false);
     </script>
 </html>
