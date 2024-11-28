@@ -9,7 +9,7 @@ class EdenredWebchat {
         // Create a "New Message" indicator
         const newMessageIndicator = document.createElement('div');
         newMessageIndicator.id = 'newMessageIndicator';
-        // newMessageIndicator.textContent = 'Nouveau message';
+        newMessageIndicator.textContent = 'Nouveau message';
         newMessageIndicator.style.cssText = `
             position: relative;
             height: 18px;
