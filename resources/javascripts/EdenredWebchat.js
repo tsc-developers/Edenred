@@ -3,6 +3,7 @@ class EdenredWebchat {
         this.cognigyEndpoint = endpoint;
         this.params = params;
         this.BOTTOM_DISTANCE = 70;
+        this.hideInput = false;
     }
     
     initEdenredWebchat(autoOpen = false) {
@@ -66,13 +67,24 @@ class EdenredWebchat {
             });
         }
 
-
         return initWebchat(this.cognigyEndpoint, this.params).then(
             (webchat) => {
                 addOpenChatListener(); //Prepare events on open chat
     
                 webchat.registerAnalyticsService((event) => {
+                    if (event.type == "webchat/open") {
+                        this.hideInputField(this.hideInput);
+                    }
+
+                    if (event.type === "webchat/outgoing-message") {
+                        if (this.hideInput == true) this.hideInputField(false);
+                    }
+
                     if (event.type === "webchat/incoming-message") { // Event when bot send message
+
+                        const { payload } = event;
+                        const { text, data } = payload;
+
                         if(container) {
                             setTimeout(() => {
                                 container.scrollTo({
@@ -84,6 +96,8 @@ class EdenredWebchat {
     
                             }, 10);
                         }
+
+                        if (data?.hideInput) this.hideInputField(true);
                     }
                 })
             }
@@ -107,6 +121,20 @@ class EdenredWebchat {
                 childList: true,
                 subtree: true,
             });
+        });
+    }
+
+    hideInputField(v) {
+        this.waitForElm(".webchat-input").then((elm) => {
+          try {
+            if(v)
+              elm.style.display = "none"
+            else
+              elm.style.display = "block";
+            this.hideInput = v;
+          } catch (error) {
+            console.error(error);
+          }
         });
     }
 }
