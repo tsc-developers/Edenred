@@ -43,6 +43,11 @@ class EdenredWebchat {
                             }
                         });
                         
+                        container.parentElement.addEventListener('dragenter', (e) => {
+                            e.preventDefault(); // Prevent default behavior (like opening a file)
+                            e.stopPropagation(); // Optional: prevent bubbling to parent handlers
+                        });
+                        
                         let visibleView = window.visualViewport;
                         let maxViewHeight = document.documentElement.clientHeight;
 
