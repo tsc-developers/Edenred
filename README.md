@@ -22,8 +22,11 @@ Here you'll find some modifications for Edenred project.
 - Cognigy CSS example: [https://codesandbox.io/p/sandbox/css-customization-gv35e?file=%2Fwebchat-style.css](https://codesandbox.io/p/sandbox/css-customization-gv35e?file=%2Fwebchat-style.css)
 - File: [style.css](resources/style.css)
 
+- *Recomendation: Use the link from our bucket* [https://cognigy-bucket.s3.eu-west-3.amazonaws.com/prod/webchat/Edenred/style.css](https://cognigy-bucket.s3.eu-west-3.amazonaws.com/prod/webchat/Edenred/style.css)
+
+Example:
 ```
-<link rel="stylesheet" href="resources/style.css">
+<link rel="stylesheet" href="https://cognigy-bucket.s3.eu-west-3.amazonaws.com/prod/webchat/Edenred/style.css">
 ```
 
 ---
@@ -45,12 +48,13 @@ Here you'll find some modifications for Edenred project.
   - Remove the "new message" alert after the scroll hit on the bottom.
   - Fix the IOS mobile issue when the keyboard appears, it was not resizing the webchat height and hiding contents. Now the height resizing on the keyboard displays.
 - File: [EdenredWebchat.js](resources/javascripts/EdenredWebchat.js)
+- *Recomendation: Use the link from our bucket* [https://cognigy-bucket.s3.eu-west-3.amazonaws.com/prod/webchat/Edenred/EdenredWebchat.min.js](https://cognigy-bucket.s3.eu-west-3.amazonaws.com/prod/webchat/Edenred/EdenredWebchat.min.js)
 
 ### **Usage:**
 - Load cognigy webchat and our custom code.
 ```
   <script src="https://github.com/Cognigy/Webchat/releases/latest/download/webchat.js"></script>
-  <script src="resources/javascripts/EdenredWebchat.js"></script>
+  <script src="https://cognigy-bucket.s3.eu-west-3.amazonaws.com/prod/webchat/Edenred/EdenredWebchat.min.js"></script>
 ```
 - Create a new instance of EdenredWebchat and call initEdenredWebchat.
   - endpoint-url: The endpoint URL provided on the cognigy endpoint.
@@ -69,6 +73,10 @@ Here you'll find some modifications for Edenred project.
 ---
 
 ## **Complete usage example**
+- You can download all the files and include them on your system or use our bucket links.
+  - CSS: [https://cognigy-bucket.s3.eu-west-3.amazonaws.com/prod/webchat/Edenred/style.css](https://cognigy-bucket.s3.eu-west-3.amazonaws.com/prod/webchat/Edenred/style.css)
+  - Custom Stript: [https://cognigy-bucket.s3.eu-west-3.amazonaws.com/prod/webchat/Edenred/EdenredWebchat.min.js](https://cognigy-bucket.s3.eu-west-3.amazonaws.com/prod/webchat/Edenred/EdenredWebchat.min.js)
+  - Plugin: [https://cognigy-bucket.s3.eu-west-3.amazonaws.com/prod/webchat/Edenred/rating-plugin.js](https://cognigy-bucket.s3.eu-west-3.amazonaws.com/prod/webchat/Edenred/rating-plugin.js)
 
 ```
 <!DOCTYPE html>
@@ -79,12 +87,12 @@ Here you'll find some modifications for Edenred project.
     <meta name="apple-mobile-web-app-capable" content="yes" />
 
     <title>Document</title>
-    <link rel="stylesheet" href="resources/style.css">
+    <link rel="stylesheet" href="https://cognigy-bucket.s3.eu-west-3.amazonaws.com/prod/webchat/Edenred/style.css">
   </head>
   <body></body>
     <script src="https://github.com/Cognigy/Webchat/releases/latest/download/webchat.js"></script>
     <script src="https://cognigy-bucket.s3.eu-west-3.amazonaws.com/prod/webchat/Edenred/rating-plugin.js"></script>
-    <script src="resources/javascripts/EdenredWebchat.js"></script>
+    <script src="https://cognigy-bucket.s3.eu-west-3.amazonaws.com/prod/webchat/Edenred/EdenredWebchat.min.js"></script>
     <script>
         const cognigy = new EdenredWebchat(
             "https://endpoint-foundever.cognigy.cloud/5641fb8fcd70dffe2d090d03a478a86305825ef831ad17f8259b612ce179a616",
