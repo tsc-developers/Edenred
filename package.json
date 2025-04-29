@@ -1,0 +1,15 @@
+{
+  "name": "cognigy-edenred",
+  "version": "1.0.0",
+  "description": "Cognigy Edenred custom script",
+  "scripts": {
+    "sass": "sass --watch resources/style.scss:resources/style.css --style compressed",
+    "uglify": "uglifyjs ./resources/javascripts/EdenredWebchat.js -o ./resources/javascripts/EdenredWebchat.min.js  -c -m",
+    "deploy-js": "npm run uglify && aws s3 cp resources/javascripts/EdenredWebchat.min.js s3://cognigy-bucket/prod/webchat/Edenred --acl public-read --profile cognigy",
+    "deploy-css": "aws s3 cp resources/style.css s3://cognigy-bucket/prod/webchat/Edenred --acl public-read --profile cognigy"
+  },
+  "devDependencies": {
+    "sass": "^1.71.1",
+    "uglify-js": "^3.19.3"
+  }
+}

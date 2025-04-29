@@ -9,6 +9,8 @@ Here you'll find some modifications for Edenred project.
 - [**Edenred Webchat**](#edenred-webchat)
   - [**Table of Contents**](#table-of-contents)
   - [**CSS Customizations**](#css-customizations)
+    - [JS minify](#js-minify)
+    - [SASS](#sass)
   - [**Rating plugin**](#rating-plugin)
   - [**Custom Script**](#custom-script)
     - [**Usage:**](#usage)
@@ -28,6 +30,36 @@ Example:
 ```
 <link rel="stylesheet" href="https://cognigy-bucket.s3.eu-west-3.amazonaws.com/prod/webchat/Edenred/style.css">
 ```
+
+### JS minify
+
+**Requirements**
+
+uglify-js: https://www.npmjs.com/package/uglify-js
+
+**How to**
+
+To generate a midified version of the script.
+
+`npm install && npm run uglify`
+
+### SASS
+
+**Requirements**
+
+sass: https://www.npmjs.com/package/sass
+
+python
+
+**How to**
+
+In the `scss` folder
+
+1. Make changes to `cog-migration.scss`
+2. Run `python3 image2base64inline.py` [important] whenever you add new images to the file, so it will replace images files to inline base64 images.
+3. Run `npm run sass`
+4. Open `index-dev.html`
+
 
 ---
 
