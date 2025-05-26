@@ -19,6 +19,17 @@
             }
         }
 
+        .webchat-message-row {
+            .rating {
+                display: none;
+            }
+            &:last-of-type {
+                .rating {
+                    display: block;
+                }
+            }
+        }
+
         .webchat-message-row.bot {
             .webchat-avatar {
                 display: none;
